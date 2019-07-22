@@ -1,19 +1,15 @@
 const path = require('path');
-const webpack = require('webpack');
 const htmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const devMode = process.env.NODE_ENV !== 'production';
+console.log(devMode, 'devMode');
 
 module.exports = {
-  mode: 'development',
   entry: './assets/index.js',
   output: {
     path: path.resolve(__dirname, '../dist'),
     filename: '[name].[hash].[id].bundle1.js'
-  },
-  devServer: {
-    contentBase: 'dist/index.html',
-    open: true,
-    hot: true
   },
   module: {
     rules: [
@@ -23,10 +19,12 @@ module.exports = {
         use: 'babel-loader'
       },
       {
-        test: /\.css$/,
+        test: /\.(sa|sc|c)ss$/,
         use: [
-          'style-loader',
-          'css-loader'
+          devMode ? 'style-loader' : MiniCssExtractPlugin.loader, //网上资料显示会对HMR(热加载插件)有影响，建议在prod使用
+          'css-loader',
+          'postcss-loader', // 处理浏览器兼容
+          'sass-loader'
         ]
       }
     ]
@@ -37,7 +35,6 @@ module.exports = {
       filename: 'index.html',
       template: 'view/index.html',
       inject: true
-    }),
-    new webpack.HotModuleReplacementPlugin(),
+    })
   ]
 };

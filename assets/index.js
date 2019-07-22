@@ -1,4 +1,5 @@
 import './test.css';
+import './scss/index.scss';
 const tmp = {
   crateTmp() {
     const el = document.createElement('div');
