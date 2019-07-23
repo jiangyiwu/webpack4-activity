@@ -13,6 +13,13 @@ class Test {
   constructor() {
     console.log(12312, tmp.crateTmp());
     document.getElementsByTagName('body')[0].appendChild(tmp.crateTmp());
+    this.newData = this.initTest();
+    console.log(this.newData);
+  }
+
+  initTest() {
+    const data = { name: 'zhangsan', age: 24 };
+    return Object.assign(data, { sex: 'male' });
   }
 }
 

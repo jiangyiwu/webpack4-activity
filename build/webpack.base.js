@@ -16,7 +16,11 @@ module.exports = {
       {
         test: /\.m?js$/,
         exclude: /(node_modules|bower_components)/,
-        use: 'babel-loader'
+        loader: 'babel-loader',
+        query: {
+          presets: ['latest'],
+          plugins: ['transform-runtime']
+        }
       },
       {
         test: /\.(sa|sc|c)ss$/,
