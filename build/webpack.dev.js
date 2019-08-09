@@ -6,7 +6,7 @@ module.exports = merge(base, {
   mode: 'development',
   devtool: 'inline-source-map',
   devServer: {
-    contentBase: 'dist/index.html',
+    contentBase: './',
     open: true,
     hot: true
   },

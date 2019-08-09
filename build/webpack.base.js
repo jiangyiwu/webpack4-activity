@@ -2,11 +2,13 @@ const path = require('path');
 const htmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const devMode = process.env.NODE_ENV !== 'production';
-console.log(devMode, 'devMode');
+console.log(devMode, process.env.NODE_ENV, 'devMode');
 
 module.exports = {
+  mode: 'none',
   entry: './assets/index.js',
   output: {
+    publicPath: '/assets/',
     path: path.resolve(__dirname, '../dist'),
     filename: '[name].[hash].[id].bundle1.js'
   },
