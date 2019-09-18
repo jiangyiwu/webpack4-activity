@@ -11,7 +11,7 @@ const tmp = {
   crateTmp() {
     const el = document.createElement('div');
     el.setAttribute('class', 'webpack-text-css');
-    el.innerHTML = `http://bloomberg-local.polyv.net/watch/c4664863?userid=${userid}&ts=${ts}&sign=${sign}&custom=1231`;
+    el.innerHTML = `http://123.net/watch/c4664863?userid=${userid}&ts=${ts}&sign=${sign}&custom=1231`;
     return el;
   }
 }
