@@ -2,13 +2,16 @@ const path = require('path');
 const htmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const devMode = process.env.NODE_ENV !== 'production';
+
+const ROOT_PATH = path.resolve(__dirname);
+const APP_PATH = path.resolve(ROOT_PATH, '../src');
 console.log(devMode, process.env.NODE_ENV, 'devMode');
 
 module.exports = {
   mode: 'none',
-  entry: './assets/index.js',
+  entry: './src/assets/index.js',
   output: {
-    publicPath: '/assets/',
+    publicPath: '/',
     path: path.resolve(__dirname, '../dist'),
     filename: '[name].[hash].[id].bundle1.js'
   },
@@ -36,8 +39,8 @@ module.exports = {
   },
   plugins: [
     new htmlWebpackPlugin({
-      filename: 'index.html',
-      template: 'view/index.html',
+      filename: 'index.html', // 输出路径
+      template: APP_PATH + '/index.html', // 项目入口文件
       inject: true
     })
   ]
